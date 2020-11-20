@@ -31,10 +31,8 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
-    packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:false});
-	packageBody.x = package.x
-    packageBody.y = package.y
-	World.add(world, packageBody);
+    packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
+    World.add(world, packageBody);
 	
 
 	//Create a Ground
@@ -58,6 +56,6 @@ function draw() {
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-    packageBody.setStatic = false;
+Matter.Body.setStatic(packageBody,false)
   }
 }
