@@ -31,12 +31,12 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
-    packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
-    World.add(world, packageBody);
+    packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5,friction:0.5, isStatic:true});
+	World.add(world, packageBody);
 	
 
 	//Create a Ground
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true,friction:0.5} );
  	World.add(world, ground);
 
 
@@ -44,18 +44,19 @@ function setup() {
   
 }
 
-
 function draw() {
   rectMode(CENTER);
   background(0);
   package.x = packageBody.position.x 
-  package.y = packageBody.position.y 
+  package.y = packageBody.position.y
   drawSprites();
  
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-Matter.Body.setStatic(packageBody,false)
-  }
+
+	Matter.Body.setStatic(packageBody,false)
+
+}
 }
